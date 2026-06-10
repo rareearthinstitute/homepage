@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rare Earth Institute</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Source+Serif+4:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--blue:#0057FF;
+--blue-deep:#003DB8;
+--blue-pale:#E6EEFF;
+--navy:#0A1628;
+--steel:#4A5A72;
+--rule:#D0D8E4;
+--off:#F5F7FB;
+--white:#FFFFFF;
+}
+html{font-family:'Inter',sans-serif;color:var(--navy);background:var(--white);font-size:16px;line-height:1.6}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1100px;margin:0 auto;padding:0 48px}
+
+/* NAV */
+nav{border-bottom:1px solid var(--rule);background:var(--white);position:sticky;top:0;z-index:100}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.logo-mark{width:28px;height:28px;background:var(--blue);border-radius:2px;display:flex;align-items:center;justify-content:center}
+.logo-wordmark{font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--navy)}
+.logo-sub{font-size:11px;font-weight:400;letter-spacing:.08em;text-transform:uppercase;color:var(--steel);margin-top:1px}
+.nav-links{display:flex;gap:0;align-items:center}
+.nav-links a{font-size:13px;font-weight:400;color:var(--steel);padding:0 16px;height:64px;display:flex;align-items:center;border-bottom:2px solid transparent;transition:color .15s,border-color .15s}
+.nav-links a:hover,.nav-links a.active{color:var(--navy);border-bottom-color:var(--blue)}
+.nav-cta{font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--blue);border:1px solid var(--blue);padding:8px 18px;border-radius:2px;margin-left:24px;transition:background .15s,color .15s}
+.nav-cta:hover{background:var(--blue);color:var(--white)}
+
+/* TICKER */
+.ticker{background:var(--navy);padding:10px 0;overflow:hidden}
+.ticker-inner{display:flex;gap:48px;white-space:nowrap;animation:scroll 35s linear infinite}
+.ticker-item{font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.ticker-dot{color:rgba(255,255,255,.2)}
+@keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* HERO */
+.hero{padding:96px 0 80px;border-bottom:1px solid var(--rule)}
+.hero-eyebrow{font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin-bottom:24px}
+.hero-h1{font-family:'Source Serif 4',Georgia,serif;font-size:54px;font-weight:300;line-height:1.1;color:var(--navy);max-width:780px;margin-bottom:28px}
+.hero-h1 em{font-style:italic;color:var(--blue)}
+.hero-body{font-size:17px;font-weight:300;color:var(--steel);max-width:560px;line-height:1.75;margin-bottom:40px}
+.hero-actions{display:flex;align-items:center;gap:24px}
+.btn-primary{font-size:13px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--white);background:var(--blue);padding:13px 28px;border-radius:2px;transition:background .15s}
+.btn-primary:hover{background:var(--blue-deep)}
+.btn-ghost{font-size:13px;font-weight:400;color:var(--steel);border:1px solid var(--rule);padding:12px 24px;border-radius:2px;transition:border-color .15s,color .15s}
+.btn-ghost:hover{border-color:var(--steel);color:var(--navy)}
+.hero-stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:64px;padding-top:48px;border-top:1px solid var(--rule)}
+.stat-item{padding-right:32px;border-right:1px solid var(--rule)}
+.stat-item:last-child{border-right:none}
+.stat-item+.stat-item{padding-left:32px}
+.stat-num{font-size:34px;font-weight:300;color:var(--navy);letter-spacing:-.02em;line-height:1}
+.stat-num sup{font-size:20px;color:var(--blue)}
+.stat-label{font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--steel);margin-top:8px;line-height:1.5}
+
+/* THREAT */
+.threat{padding:80px 0;border-bottom:1px solid var(--rule);background:var(--navy)}
+.threat-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.threat-eyebrow{font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:16px}
+.threat-h{font-family:'Source Serif 4',Georgia,serif;font-size:36px;font-weight:300;color:var(--white);line-height:1.2;margin-bottom:20px}
+.threat-body{font-size:15px;font-weight:300;color:rgba(255,255,255,.6);line-height:1.75;margin-bottom:32px}
+.threat-pull{font-family:'Source Serif 4',Georgia,serif;font-size:19px;font-style:italic;font-weight:300;color:rgba(255,255,255,.85);border-left:2px solid var(--blue);padding-left:20px;line-height:1.6;margin-top:32px}
+.threat-cards{display:flex;flex-direction:column;gap:1px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden}
+.threat-card{background:rgba(255,255,255,.04);padding:22px 24px;border-left:2px solid transparent;transition:border-color .15s,background .15s}
+.threat-card:hover{background:rgba(255,255,255,.07);border-left-color:var(--blue)}
+.tc-actor{font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:6px}
+.tc-title{font-size:15px;font-weight:500;color:var(--white);margin-bottom:6px}
+.tc-desc{font-size:13px;font-weight:300;color:rgba(255,255,255,.55);line-height:1.6}
+.tc-tags{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
+.tc-tag{font-size:10px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:1px}
+.tag-red{background:rgba(200,16,46,.22);color:#F0788A}
+.tag-amber{background:rgba(186,117,23,.22);color:#EFB847}
+.tag-blue{background:rgba(0,87,255,.22);color:#7EB3FF}
+
+/* CAPABILITIES */
+.capabilities{padding:80px 0;border-bottom:1px solid var(--rule)}
+.section-eyebrow{font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin-bottom:16px}
+.section-h2{font-family:'Source Serif 4',Georgia,serif;font-size:36px;font-weight:300;color:var(--navy);line-height:1.2;margin-bottom:20px}
+.section-lead{font-size:16px;font-weight:300;color:var(--steel);line-height:1.75}
+.cap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:2px;overflow:hidden;margin-top:48px}
+.cap-card{background:var(--white);padding:32px 28px;transition:background .15s}
+.cap-card:hover{background:var(--blue-pale)}
+.cap-num{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:20px}
+.cap-title{font-size:16px;font-weight:500;color:var(--navy);margin-bottom:12px;line-height:1.3}
+.cap-body{font-size:13px;font-weight:300;color:var(--steel);line-height:1.7}
+.cap-domains{display:flex;gap:6px;margin-top:16px;flex-wrap:wrap}
+.cap-domain{font-size:10px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:#0C447C;background:var(--blue-pale);padding:3px 8px;border-radius:1px}
+
+/* TOOLS */
+.tools{padding:80px 0;background:var(--off);border-bottom:1px solid var(--rule)}
+.tools-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px}
+.tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.tool-card{background:var(--white);border:1px solid var(--rule);border-radius:2px;display:flex;flex-direction:column;transition:border-color .2s}
+.tool-card:hover{border-color:var(--blue)}
+.tool-card-top{padding:28px 28px 0}
+.tool-tag{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#0C447C;background:var(--blue-pale);padding:4px 10px;border-radius:1px;margin-bottom:14px}
+.tool-title{font-size:16px;font-weight:500;color:var(--navy);line-height:1.3;margin-bottom:10px}
+.tool-desc{font-size:13px;font-weight:300;color:var(--steel);line-height:1.7;padding:0 28px 24px}
+.tool-meta{padding:14px 28px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;margin-top:auto}
+.tool-stat{font-size:11px;color:var(--steel)}
+.tool-stat strong{color:var(--navy);font-weight:500}
+.tool-link{font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--blue)}
+
+/* POSTURE */
+.posture{padding:80px 0;border-bottom:1px solid var(--rule)}
+.posture-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.posture-list{display:flex;flex-direction:column;gap:0;border:1px solid var(--rule);border-radius:2px;overflow:hidden}
+.posture-item{padding:22px 26px;border-bottom:1px solid var(--rule);background:var(--white);transition:background .15s}
+.posture-item:last-child{border-bottom:none}
+.posture-item:hover{background:var(--blue-pale)}
+.pi-region{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:7px}
+.pi-title{font-size:15px;font-weight:500;color:var(--navy);margin-bottom:4px}
+.pi-desc{font-size:13px;font-weight:300;color:var(--steel);line-height:1.6}
+.posture-statement{margin-top:36px;border-left:2px solid var(--blue);padding-left:20px}
+.ps-text{font-family:'Source Serif 4',Georgia,serif;font-size:19px;font-weight:300;font-style:italic;color:var(--navy);line-height:1.6}
+.ps-attr{font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--steel);margin-top:12px}
+
+/* LATEST */
+.latest{padding:80px 0;border-bottom:1px solid var(--rule)}
+.latest-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:40px}
+.post-list{border-top:1px solid var(--rule)}
+.post{display:grid;grid-template-columns:88px 1fr 24px;gap:32px;align-items:start;padding:28px 0;border-bottom:1px solid var(--rule);cursor:pointer;transition:opacity .15s}
+.post:hover{opacity:.65}
+.post-date{font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--steel);padding-top:3px;line-height:1.5}
+.post-tag{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#0C447C;background:var(--blue-pale);padding:3px 8px;border-radius:1px;margin-bottom:8px}
+.post-title{font-size:16px;font-weight:400;color:var(--navy);line-height:1.4}
+.post-excerpt{font-size:13px;font-weight:300;color:var(--steel);margin-top:6px;line-height:1.6}
+.post-arrow{color:var(--rule);font-size:18px;padding-top:4px;transition:color .15s}
+.post:hover .post-arrow{color:var(--blue)}
+
+/* ABOUT */
+.about{background:var(--navy);padding:72px 0}
+.about-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-h{font-family:'Source Serif 4',Georgia,serif;font-size:34px;font-weight:300;color:var(--white);line-height:1.2;margin-bottom:20px}
+.about-body{font-size:15px;font-weight:300;color:rgba(255,255,255,.55);line-height:1.75}
+.about-cta{display:inline-block;font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--white);border:1px solid rgba(255,255,255,.3);padding:12px 24px;border-radius:2px;margin-top:28px;transition:border-color .15s}
+.about-cta:hover{border-color:rgba(255,255,255,.8)}
+.about-facts{display:flex;flex-direction:column;gap:1px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden}
+.af{background:rgba(255,255,255,.03);padding:18px 22px;border-left:2px solid var(--blue)}
+.af-label{font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:5px}
+.af-val{font-size:13px;font-weight:300;color:rgba(255,255,255,.8);line-height:1.5}
+
+/* FOOTER */
+footer{background:var(--white);border-top:1px solid var(--rule);padding:36px 0}
+.footer-inner{display:flex;justify-content:space-between;align-items:center}
+.footer-id{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--navy)}
+.footer-sub{font-size:11px;color:var(--steel);margin-top:2px}
+.footer-links{display:flex;gap:24px}
+.footer-links a{font-size:12px;color:var(--steel);transition:color .15s}
+.footer-links a:hover{color:var(--blue)}
+.footer-legal{font-size:11px;color:var(--steel);margin-top:20px;padding-top:20px;border-top:1px solid var(--rule);text-align:center}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="nav-inner">
+      <div class="nav-logo">
+        <div class="logo-mark">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <polygon points="8,2 14,6 14,10 8,14 2,10 2,6" fill="none" stroke="white" stroke-width="1.5"/>
+            <circle cx="8" cy="8" r="1.5" fill="white"/>
+          </svg>
+        </div>
+        <div>
+          <div class="logo-wordmark">Rare Earth Institute</div>
+          <div class="logo-sub">Washington, D.C.</div>
+        </div>
+      </div>
+      <div class="nav-links">
+        <a href="#" class="active">Research</a>
+        <a href="#">Threats</a>
+        <a href="#">Technology</a>
+        <a href="#">Tools</a>
+        <a href="#">About</a>
+        <a href="#" class="nav-cta">Subscribe</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item">Adversary Counter-Space Programs</span><span class="ticker-dot"> · </span>
+    <span class="ticker-item">sUAS Proliferation &amp; TCO Networks</span><span class="ticker-dot"> · </span>
+    <span class="ticker-item">PRC Industrial-Military Convergence</span><span class="ticker-dot"> · </span>
+    <span class="ticker-item">Directed Energy &amp; Electronic Warfare</span><span class="ticker-dot"> · </span>
+    <span class="ticker-item">Security Cooperation Modernization</span><span class="ticker-dot"> · </span>
+    <span class="ticker-item">INDOPACOM Force Posture</span><span class="ticker-dot"> · </span>
+    <span class="ticker-item">Autonomous Systems &amp; AI Integration</span><span class="ticker-dot"> · </span>
+    <span class="ticker-item">Partner Nation Capacity Building</span><span class="ticker-dot"> · </span>
+    <span class="ticker-item">Adversary Counter-Space Programs</span><span class="ticker-dot"> · </span>
+    <span class="ticker-item">sUAS Proliferation &amp; TCO Networks</span><span class="ticker-dot"> · </span>
+    <span class="ticker-item">PRC Industrial-Military Convergence</span><span class="ticker-dot"> · </span>
+    <span class="ticker-item">Directed Energy &amp; Electronic Warfare</span><span class="ticker-dot"> · </span>
+    <span class="ticker-item">Security Cooperation Modernization</span><span class="ticker-dot"> · </span>
+    <span class="ticker-item">INDOPACOM Force Posture</span><span class="ticker-dot"> · </span>
+    <span class="ticker-item">Autonomous Systems &amp; AI Integration</span><span class="ticker-dot"> · </span>
+    <span class="ticker-item">Partner Nation Capacity Building</span><span class="ticker-dot"> · </span>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-eyebrow">National Security Research &amp; Technology Analysis</div>
+    <h1 class="hero-h1">Adversaries are moving.<br><em>The question is whether<br>we are moving faster.</em></h1>
+    <p class="hero-body">Rare Earth Institute produces independent research at the intersection of adversary threat analysis, advanced technology integration, and the policy frameworks that project U.S. national security objectives across every contested domain.</p>
+    <div class="hero-actions">
+      <a href="#" class="btn-primary">Read Our Research</a>
+      <a href="#" class="btn-ghost">Explore the Tools</a>
+    </div>
+    <div class="hero-stat-row">
+      <div class="stat-item">
+        <div class="stat-num">3<sup>×</sup></div>
+        <div class="stat-label">PRC Defense Budget<br>Growth Since 2015</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">18<sup>mo</sup></div>
+        <div class="stat-label">U.S. Tech Qualification<br>vs. Days for Adversaries</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">140<sup>+</sup></div>
+        <div class="stat-label">Partner Nations in<br>Active Security Cooperation</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">5</div>
+        <div class="stat-label">Contested Domains:<br>Land, Sea, Air, Space, Cyber</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="threat">
+  <div class="wrap">
+    <div class="threat-inner">
+      <div>
+        <div class="threat-eyebrow">Threat Environment</div>
+        <h2 class="threat-h">The adversary calculus has changed</h2>
+        <p class="threat-body">China and Russia have restructured their military-industrial complexes around technologies that directly contest U.S. advantages — autonomous systems, electronic warfare, hypersonics, and counter-space capabilities. Transnational criminal organizations have absorbed battlefield technologies from Ukraine and applied them against U.S. interests in the western hemisphere. The pace of adversary adaptation now exceeds the pace of U.S. acquisition.</p>
+        <blockquote class="threat-pull">"Speed of adoption is now a more decisive variable than technical superiority alone."</blockquote>
+      </div>
+      <div class="threat-cards">
+        <div class="threat-card">
+          <div class="tc-actor">PRC · Strategic Competitor</div>
+          <div class="tc-title">Military-Civil Fusion &amp; Technology Acquisition</div>
+          <div class="tc-desc">Systematic acquisition of dual-use technology through academic, commercial, and intelligence channels. Accelerating indigenous capability in autonomous systems, AI, and electronic warfare.</div>
+          <div class="tc-tags">
+            <span class="tc-tag tag-red">Critical Threat</span>
+            <span class="tc-tag tag-blue">INDOPACOM</span>
+          </div>
+        </div>
+        <div class="threat-card">
+          <div class="tc-actor">Russia · Active Adversary</div>
+          <div class="tc-title">Electronic Warfare &amp; UAS Doctrine Diffusion</div>
+          <div class="tc-desc">Ukraine conflict has produced a global laboratory for EW, FPV swarms, and autonomous strike. Tactics are diffusing to state and non-state actors in real time.</div>
+          <div class="tc-tags">
+            <span class="tc-tag tag-amber">Active Diffusion</span>
+            <span class="tc-tag tag-blue">EUCOM / CENTCOM</span>
+          </div>
+        </div>
+        <div class="threat-card">
+          <div class="tc-actor">TCOs · Asymmetric Threat</div>
+          <div class="tc-title">Cartel Drone Programs &amp; C2 Networks</div>
+          <div class="tc-desc">Transnational criminal organizations operate mature multi-mission UAS programs along the southern border. Commercial procurement, rapid iteration, and prison command-and-control delivery — all below the threshold of traditional military response.</div>
+          <div class="tc-tags">
+            <span class="tc-tag tag-red">Active Operations</span>
+            <span class="tc-tag tag-blue">SOUTHCOM / NORTHCOM</span>
+          </div>
+        </div>
+        <div class="threat-card">
+          <div class="tc-actor">Non-State Actors · Emerging</div>
+          <div class="tc-title">Counter-Space &amp; Spectrum Contestation</div>
+          <div class="tc-desc">GPS jamming, satellite uplink interference, and RF-silent autonomous systems are now accessible below nation-state cost thresholds. Partner nation infrastructure is exposed.</div>
+          <div class="tc-tags">
+            <span class="tc-tag tag-amber">Growing Capability</span>
+            <span class="tc-tag tag-blue">All AORs</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="capabilities">
+  <div class="wrap">
+    <div class="section-eyebrow">Research &amp; Analysis</div>
+    <h2 class="section-h2">Where we focus</h2>
+    <p class="section-lead" style="max-width:600px">Six domains where adversary capability, advanced technology, and U.S. policy intersect — and where independent analysis creates strategic value.</p>
+    <div class="cap-grid">
+      <div class="cap-card">
+        <div class="cap-num">01</div>
+        <div class="cap-title">Counter-UAS &amp; Autonomous Systems</div>
+        <div class="cap-body">Decision frameworks, acquisition pathways, and legal authorities for defeating small UAS threats across military, law enforcement, and partner nation contexts.</div>
+        <div class="cap-domains"><span class="cap-domain">C-sUAS</span><span class="cap-domain">FPV</span><span class="cap-domain">Swarm</span></div>
+      </div>
+      <div class="cap-card">
+        <div class="cap-num">02</div>
+        <div class="cap-title">Electronic Warfare &amp; Spectrum</div>
+        <div class="cap-body">Spectrum management, EW integration, and the policy gap between authorized equipment lists and the pace of adversary electronic development.</div>
+        <div class="cap-domains"><span class="cap-domain">EW</span><span class="cap-domain">GPS</span><span class="cap-domain">RF Ops</span></div>
+      </div>
+      <div class="cap-card">
+        <div class="cap-num">03</div>
+        <div class="cap-title">Security Cooperation &amp; Partner Capacity</div>
+        <div class="cap-body">Translating U.S. national security objectives into executable SC programs — FMS, FMF, IMET, and Section 333 authority alignment across partner nations.</div>
+        <div class="cap-domains"><span class="cap-domain">FMS</span><span class="cap-domain">IMET</span><span class="cap-domain">SC</span></div>
+      </div>
+      <div class="cap-card">
+        <div class="cap-num">04</div>
+        <div class="cap-title">Defense Technology Acquisition</div>
+        <div class="cap-body">Mapping the fastest compliant pathway from validated requirement to fielded capability — OTA, SBIR, FAR Part 12, SAP — with regulatory constraints applied.</div>
+        <div class="cap-domains"><span class="cap-domain">OTA</span><span class="cap-domain">SBIR</span><span class="cap-domain">DPA</span></div>
+      </div>
+      <div class="cap-card">
+        <div class="cap-num">05</div>
+        <div class="cap-title">Theater Logistics &amp; Force Projection</div>
+        <div class="cap-body">Contract vehicle intelligence, task order mapping, and supply chain analysis across INDOPACOM and SOUTHCOM AORs — from strategic lift to last-mile delivery.</div>
+        <div class="cap-domains"><span class="cap-domain">INDOPACOM</span><span class="cap-domain">SOUTHCOM</span><span class="cap-domain">SOF</span></div>
+      </div>
+      <div class="cap-card">
+        <div class="cap-num">06</div>
+        <div class="cap-title">AI, Autonomy &amp; Emerging Technology</div>
+        <div class="cap-body">Policy and acquisition implications of AI-enabled command systems, autonomous logistics, and the integration of commercial technology into national security operations.</div>
+        <div class="cap-domains"><span class="cap-domain">AI/ML</span><span class="cap-domain">Autonomy</span><span class="cap-domain">COTS</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tools">
+  <div class="wrap">
+    <div class="tools-header">
+      <div>
+        <div class="section-eyebrow">Interactive Tools</div>
+        <h2 class="section-h2">Decision-support frameworks</h2>
+      </div>
+      <a href="#" style="font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);border-bottom:1px solid var(--blue);padding-bottom:1px">All Tools →</a>
+    </div>
+    <div class="tools-grid">
+      <a href="https://rareearthinstitute.github.io/C-sUAS-Decision-Framework/" target="_blank" style="display:contents">
+        <div class="tool-card">
+          <div class="tool-card-top">
+            <div class="tool-tag">Framework · Bilingual</div>
+            <div class="tool-title">C-sUAS Decision Framework</div>
+          </div>
+          <div class="tool-desc">A 27-layer counter-small UAS decision architecture for security cooperation officers, tactical operators, and strategic decision makers. Covers jurisdiction, detection, attribution, defeat authorities, and coalition legal frameworks.</div>
+          <div class="tool-meta">
+            <div class="tool-stat"><strong>27</strong> Layers &nbsp;·&nbsp; <strong>3</strong> Jurisdictions &nbsp;·&nbsp; EN/ES</div>
+            <div class="tool-link">Open →</div>
+          </div>
+        </div>
+      </a>
+      <a href="https://rareearthinstitute.github.io/southcomtinder/index1.html" target="_blank" style="display:contents">
+        <div class="tool-card">
+          <div class="tool-card-top">
+            <div class="tool-tag">Navigator · Acquisition</div>
+            <div class="tool-title">SOUTHCOM Acquisition Navigator</div>
+          </div>
+          <div class="tool-desc">Maps validated requirements to the fastest compliant acquisition pathway — OTA, SBIR, FAR, SAP — with all applicable policy and regulatory constraints applied across 14 active pipelines.</div>
+          <div class="tool-meta">
+            <div class="tool-stat"><strong>14</strong> Pipelines &nbsp;·&nbsp; <strong>3</strong> Sub-60 day options</div>
+            <div class="tool-link">Open →</div>
+          </div>
+        </div>
+      </a>
+      <a href="https://rareearthinstitute.github.io/WEXMAC-LOGCAP-EAGLE-Global-Map/version10.html" target="_blank" style="display:contents">
+        <div class="tool-card">
+          <div class="tool-card-top">
+            <div class="tool-tag">Intel Map · SOUTHCOM</div>
+            <div class="tool-title">WEXMAC · LOGCAP V · EAGLE II Global Intelligence</div>
+          </div>
+          <div class="tool-desc">Interactive geographic intelligence platform mapping contract vehicles, task order locations, and recompete targets across the SOUTHCOM AOR. Open-source contract intelligence synthesized with theater posture analysis.</div>
+          <div class="tool-meta">
+            <div class="tool-stat"><strong>30+</strong> Countries &nbsp;·&nbsp; <strong>13</strong> FTOs Mapped</div>
+            <div class="tool-link">Open →</div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="posture">
+  <div class="wrap">
+    <div class="posture-grid">
+      <div>
+        <div class="section-eyebrow">Global Posture</div>
+        <h2 class="section-h2">Projecting U.S. objectives across every AOR</h2>
+        <p class="section-lead" style="max-width:480px">Security cooperation is not aid. It is the mechanism through which the United States shapes the security environment before conflict — building partner capacity, establishing interoperability, and countering adversary influence at the point of contact.</p>
+        <div class="posture-statement">
+          <div class="ps-text">"The forward edge of U.S. national security is a partner nation officer who was trained last year and equipped the year before."</div>
+          <div class="ps-attr">— REI Security Cooperation Framework, 2026</div>
+        </div>
+      </div>
+      <div class="posture-list">
+        <div class="posture-item">
+          <div class="pi-region">INDOPACOM · Priority Theater</div>
+          <div class="pi-title">Taiwan Strait &amp; First Island Chain</div>
+          <div class="pi-desc">Logistics posture, pre-positioned capability, and partner nation interoperability across Japan, Philippines, Australia, and South Korea.</div>
+        </div>
+        <div class="posture-item">
+          <div class="pi-region">SOUTHCOM · Active Operations</div>
+          <div class="pi-title">Counter-TCO &amp; Southern Border</div>
+          <div class="pi-desc">Cartel drone operations, JIATF-South interdiction, and Safer Skies Act implementation across SLTT and federal jurisdictions.</div>
+        </div>
+        <div class="posture-item">
+          <div class="pi-region">CENTCOM · Persistent Engagement</div>
+          <div class="pi-title">Gulf Security &amp; Counter-Iran</div>
+          <div class="pi-desc">Maritime security cooperation, Houthi UAS threat response, and GCC partner capacity under evolving regional alignment.</div>
+        </div>
+        <div class="posture-item">
+          <div class="pi-region">EUCOM · NATO Reinforcement</div>
+          <div class="pi-title">Flank Defense &amp; EW Integration</div>
+          <div class="pi-desc">Eastern flank capacity building and drone warfare lessons from Ukraine applied to NATO interoperability standards and Article 5 planning.</div>
+        </div>
+        <div class="posture-item">
+          <div class="pi-region">AFRICOM · Emerging Competition</div>
+          <div class="pi-title">Counter-Wagner &amp; PRC Influence</div>
+          <div class="pi-desc">Countering Russian and Chinese security sector penetration through targeted SC programs, IMET expansion, and institutional capacity development.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="latest">
+  <div class="wrap">
+    <div class="latest-header">
+      <div>
+        <div class="section-eyebrow">Latest Work</div>
+        <h2 class="section-h2">Research &amp; Analysis</h2>
+      </div>
+      <a href="#" style="font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);border-bottom:1px solid var(--blue);padding-bottom:1px">All Publications →</a>
+    </div>
+    <div class="post-list">
+      <div class="post">
+        <div class="post-date">Jun 2026</div>
+        <div>
+          <div class="post-tag">Report</div>
+          <div class="post-title">Speed as Strategy: Adversary Acquisition Cycles and the U.S. Response Window</div>
+          <div class="post-excerpt">PRC and TCO technology adoption timelines versus U.S. acquisition — and what a compressed response doctrine would require.</div>
+        </div>
+        <div class="post-arrow">→</div>
+      </div>
+      <div class="post">
+        <div class="post-date">May 2026</div>
+        <div>
+          <div class="post-tag">Policy Brief</div>
+          <div class="post-title">Safer Skies Act Implementation: Closing the Spectrum Authorization Gap Before the Next Incursion</div>
+          <div class="post-excerpt">DHS and DOJ regulations due June 2026. What the authorized equipment list must include — and what it will miss if procurement timelines hold.</div>
+        </div>
+        <div class="post-arrow">→</div>
+      </div>
+      <div class="post">
+        <div class="post-date">Apr 2026</div>
+        <div>
+          <div class="post-tag">Analysis</div>
+          <div class="post-title">Ukraine Diffusion: How FPV Swarm Tactics Entered Cartel Operations Along the Southern Border</div>
+          <div class="post-excerpt">The pathway from Zaporizhzhia to Sonora — commercial procurement, YouTube tutorials, and the absence of a coherent NORTHCOM response doctrine.</div>
+        </div>
+        <div class="post-arrow">→</div>
+      </div>
+      <div class="post">
+        <div class="post-date">Mar 2026</div>
+        <div>
+          <div class="post-tag">Framework</div>
+          <div class="post-title">Security Cooperation as Deterrence: Rethinking the FMS-to-Readiness Pipeline in the INDOPACOM AOR</div>
+          <div class="post-excerpt">Partner nation equipment is only as useful as the training and sustainment that follows. A framework for measuring SC effectiveness as a deterrence input.</div>
+        </div>
+        <div class="post-arrow">→</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about">
+  <div class="wrap">
+    <div class="about-inner">
+      <div>
+        <h2 class="about-h">Independent analysis.<br>No agenda but clarity.</h2>
+        <p class="about-body">Rare Earth Institute is a Virginia-registered nonprofit research organization. We are not funded by defense industry, do not hold government contracts, and do not represent any commercial interest. Our only obligation is to produce rigorous, independent analysis in service of U.S. national security.</p>
+        <a href="#" class="about-cta">About the Institute</a>
+      </div>
+      <div class="about-facts">
+        <div class="af">
+          <div class="af-label">Organization</div>
+          <div class="af-val">501(c)(3) Nonprofit · Arlington, Virginia · Incorporated 2024</div>
+        </div>
+        <div class="af">
+          <div class="af-label">Independence</div>
+          <div class="af-val">No government contracts · No defense industry funding · No commercial representation</div>
+        </div>
+        <div class="af">
+          <div class="af-label">Research Focus</div>
+          <div class="af-val">Adversary threat analysis · Advanced technology · Security cooperation · Force projection</div>
+        </div>
+        <div class="af">
+          <div class="af-label">Engagement</div>
+          <div class="af-val">Congressional briefings · DoD advisory · Interagency · Allied partner dialogue</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-id">Rare Earth Institute</div>
+        <div class="footer-sub">Arlington, Virginia · rareearthinstitute.org</div>
+      </div>
+      <div class="footer-links">
+        <a href="#">Research</a>
+        <a href="#">Threats</a>
+        <a href="#">Technology</a>
+        <a href="#">Tools</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+    <div class="footer-legal">© 2026 Rare Earth Institute, Inc. All rights reserved. · A Virginia Nonprofit Corporation</div>
+  </div>
+</footer>
+
+</body>
+</html>
